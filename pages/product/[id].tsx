@@ -8,6 +8,26 @@ export default function Product() {
   const id_string = Array.isArray(id) ? id[0] : id || ""
   const phoneData = phoneList[parseInt(id_string)]
 
+  const handlePay = async () => {
+    const response = await fetch("/api/createPreference", {
+      method: "POST",
+      body: JSON.stringify({
+        ...phoneData
+      })
+    })
+    const id = await response.json()
+
+    const mp = new window.MercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_TOKEN, {
+      locale: 'es-AR'
+    });
+  
+    mp.checkout({
+      preference: {
+        id: id
+      },
+    }).open();
+  }
+
     return (
         <>
             <Head>
@@ -20,12 +40,16 @@ export default function Product() {
               <div>
                 Tienda e-commerce
               </div>
-              <div style={{display: "flex", flexDirection: "column"}}>
-                <img src={phoneData.image} />
-                <div>{phoneData.name}</div>
-                <div>${phoneData.price}</div>
-                <button>Comprar</button>
-              </div>
+              {
+                phoneData ? (
+                  <div style={{display: "flex", flexDirection: "column"}}>
+                    <img src={phoneData.img} />
+                    <div>{phoneData.name}</div>
+                    <div>${phoneData.unit_price}</div>
+                    <button onClick={handlePay}>Pagar la compra</button>
+                  </div>
+                ) : null
+              }
             </main>
         </>
     );

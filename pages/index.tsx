@@ -19,9 +19,9 @@ export default function Home() {
                 {
                   phoneList.map((phone) => (
                     <div style={{display: "flex", flexDirection: "column"}}>
-                      <img src={phone.image} />
+                      <img src={phone.img} />
                       <div>{phone.name}</div>
-                      <div>${phone.price}</div>
+                      <div>${phone.unit_price}</div>
                       <Link href={`product/${phone.id}`}>Comprar</Link>
                     </div>
                   ))
