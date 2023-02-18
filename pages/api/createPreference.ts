@@ -61,11 +61,11 @@ const createPreference = async ({title, unit_price, img}:{title:string, unit_pri
       installments: 6,
     },
     auto_return: "approved",
-    notification_url: `${process.env.VERCEL_DOMAIN}/api/notifications`,
+    notification_url: `https://${process.env.VERCEL_URL}/api/notifications`,
     back_urls: {
-      success: `${process.env.VERCEL_DOMAIN}/success`,
-      pending: `${process.env.VERCEL_DOMAIN}/pending`,
-      failure: `${process.env.VERCEL_DOMAIN}/failure`,
+      success: `https://${process.env.VERCEL_URL}/success`,
+      pending: `https://${process.env.VERCEL_URL}/pending`,
+      failure: `https://${process.env.VERCEL_URL}/failure`,
     },
     external_reference: "joa193@hotmail.com",
   };
