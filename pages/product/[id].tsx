@@ -43,7 +43,7 @@ export default function Product() {
               {
                 phoneData ? (
                   <div style={{display: "flex", flexDirection: "column"}}>
-                    <img src={phoneData.img} />
+                    {/* <img src={phoneData.img} /> */}
                     <div>{phoneData.name}</div>
                     <div>${phoneData.unit_price}</div>
                     <button onClick={handlePay}>Pagar la compra</button>

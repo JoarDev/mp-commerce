@@ -18,8 +18,8 @@ export default function Home() {
               <div style={{display: "grid", gridTemplateColumns: "repeat(3,1fr)"}}>
                 {
                   phoneList.map((phone) => (
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                      <img src={phone.img} />
+                    <div key={phone.id} style={{display: "flex", flexDirection: "column"}}>
+                      {/* <img src={phone.img} /> */}
                       <div>{phone.name}</div>
                       <div>${phone.unit_price}</div>
                       <Link href={`product/${phone.id}`}>Comprar</Link>
